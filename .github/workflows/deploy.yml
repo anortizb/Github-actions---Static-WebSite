@@ -49,7 +49,7 @@ jobs: # cotenedor de todas las tareas
       # 7. Subir app a S3
       - name: Deploy to S3
         # Usamos la salida del paso anterior
-        run: aws s3 sync app/ s3://${{ steps.tf_output.outputs.bucket }} --delete
+        run: aws s3 sync app/ s3://${{ steps.tf_output.outputs.bucket }} --delete --acl public-read
 
 
       # 8. Mostrar URL
