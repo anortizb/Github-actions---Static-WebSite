@@ -1,12 +1,13 @@
 name: Deploy Infra + App # define el nombre del flujo
 
-on: # aca damos inicio al evento que dispara el flujo
+on:  # aca damos inicio al evento que dispara el flujo
   push:
     branches: [ main ]
 
-jobs: # contenedor de todas las tareas
-  deploy: # nombre del trabajo especifico
-    runs-on: ubuntu-latest # especifica la version de ubuntu que ejecutara la maquina
+jobs: # cotenedor de todas las tareas
+  deploy: # nombre de el trabajo especifico
+    runs-on: ubuntu-latest # expecifica la version de ubuntu que ejecutara la maquina
+
     steps:
       # 1. Clonar repo
       - name: Checkout code
@@ -14,7 +15,7 @@ jobs: # contenedor de todas las tareas
 
       # 2. Configurar AWS
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2 # uses son las acciones plantillas prefabricadas para usar
+        uses: aws-actions/configure-aws-credentials@v2 # uses son las acciones plantillas prefabricas para usar 
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -24,7 +25,7 @@ jobs: # contenedor de todas las tareas
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_wrapper: false
+          terraform_wrapper: false 
 
       # 4. Inicializar Terraform
       - name: Terraform Init
@@ -36,7 +37,7 @@ jobs: # contenedor de todas las tareas
         run: terraform apply -auto-approve
         working-directory: infra/
 
-      # 6. Obtener nombre del bucket
+      # 6. Obtener nombre del bucket (Versión simplificada y robusta)
       - name: Get bucket name
         id: tf_output
         run: |
@@ -49,6 +50,7 @@ jobs: # contenedor de todas las tareas
       - name: Deploy to S3
         # Usamos la salida del paso anterior
         run: aws s3 sync app/ s3://${{ steps.tf_output.outputs.bucket }} --delete
+
 
       # 8. Mostrar URL
       - name: Show Website URL
