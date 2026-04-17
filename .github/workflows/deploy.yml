@@ -17,8 +17,8 @@ jobs: # cotenedor de todas las tareas
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2 # uses son las acciones plantillas prefabricas para usar 
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: us-east-1
 
       # 3. Instalar Terraform
@@ -56,4 +56,3 @@ jobs: # cotenedor de todas las tareas
       - name: Show Website URL
         run: terraform output website_url
         working-directory: infra/
-        
