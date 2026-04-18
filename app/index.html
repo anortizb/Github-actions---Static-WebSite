@@ -1,15 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Johan CI/CD</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pablocastano6 · BeTek CI/CD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 Hola desde AWS + GitHub Actions + Johan Suescun</h1>
-    <p>Despliegue automático funcionando</p>
-    <div class="version">Versión 2</div>
-  </div>
+    <div class="glow glow--1"></div>
+    <div class="glow glow--2"></div>
+
+    <nav class="nav">
+        <div class="nav__brand">
+            <span class="nav__asterisk">✱</span>
+            <span class="nav__logo">BeTek</span>
+        </div>
+        <div class="nav__status">
+            <span class="dot"></span>
+            Deploy activo
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="badge">
+            <span class="badge__dot"></span>
+            Módulo 3 · CI/CD con GitHub Actions
+        </div>
+
+        <h1 class="hero__title">
+            Desplegado en <span class="gradient-text">AWS S3</span><br>
+            por <span class="handle">@anortizb</span>
+        </h1>
+
+        <p class="hero__subtitle">
+            Pipeline automatizado con <strong>GitHub Actions</strong> + <strong>Terraform</strong>.<br>
+            Cada push a <code>main</code> actualiza este sitio sin intervención manual.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card__icon">◆</div>
+                <h3 class="card__title">Infraestructura</h3>
+                <p class="card__text">Terraform provisiona el bucket S3 y políticas IaC.</p>
+            </div>
+            <div class="card">
+                <div class="card__icon">◉</div>
+                <h3 class="card__title">Continuous Integration</h3>
+                <p class="card__text">GitHub Actions ejecuta el workflow en cada push.</p>
+            </div>
+            <div class="card">
+                <div class="card__icon">▲</div>
+                <h3 class="card__title">Continuous Delivery</h3>
+                <p class="card__text">App sincronizada a S3 y servida como sitio estático.</p>
+            </div>
+        </div>
+
+        <div class="pipeline">
+            <div class="pipeline__step">
+                <span class="step__num">01</span>
+                <span class="step__label">Checkout</span>
+            </div>
+            <span class="pipeline__arrow">→</span>
+            <div class="pipeline__step">
+                <span class="step__num">02</span>
+                <span class="step__label">Terraform</span>
+            </div>
+            <span class="pipeline__arrow">→</span>
+            <div class="pipeline__step">
+                <span class="step__num">03</span>
+                <span class="step__label">Apply</span>
+            </div>
+            <span class="pipeline__arrow">→</span>
+            <div class="pipeline__step pipeline__step--active">
+                <span class="step__num">04</span>
+                <span class="step__label">Deploy</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__left">
+            <span class="version">v1.0.0</span>
+            <span class="sep">·</span>
+            <span>Bootcamp BeTek 2026</span>
+        </div>
+        <div class="footer__right">
+            Built by <strong>Andres Ortiz Bedoya</strong>
+        </div>
+    </footer>
 </body>
 </html>
